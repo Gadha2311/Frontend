@@ -40,7 +40,7 @@ const useSignUp = (): useSignUpReturn => {
       setError(null);
       setLoading(true);
       const res = await axios.post(
-        "https://backend-pc9y.onrender.com/api/auth/signUp",
+        "https://backend-k2d1.onrender.com/api/auth/signup", //http://localhost:3000/api/auth/signup
         values
       );
       const data = res.data;
