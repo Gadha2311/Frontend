@@ -18,7 +18,7 @@ const LoginPage: React.FC = () => {
     password: "",
   });
   const [error, setError] = useState<string | null>(null);
-  const { loginUser, error: loginError } = useLogin();
+  const { loginUser, } = useLogin();
 
   const handleSubmit = async (event: React.FormEvent) => {
     const { email, password } = formValues;

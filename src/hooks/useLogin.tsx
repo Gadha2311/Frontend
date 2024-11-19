@@ -42,7 +42,7 @@ const useLogin = (): useLoginreturn => {
       setError(null);
       setLoading(true);
       const response = await axios.post(
-        "https://localhost:3000/api/auth/login",
+        "http://localhost:3000/api/auth/login",
         values
       );
       const data = response.data;
