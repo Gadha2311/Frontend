@@ -21,7 +21,8 @@ function App() {
     <Authprovider>
       <Router>
         <Routes>
-          <Route path="/" element={<LoginPage />} />
+          <Route path="/" element={
+            <AuthRoute><LoginPage /> </AuthRoute>} />
           <Route
             path="/login"
             element={
@@ -47,6 +48,7 @@ function App() {
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const storedData = JSON.parse(localStorage.getItem("user_data") || "{}");
+  console.log(storedData);  
   if (!storedData.userTocken) {
     return <Navigate to="/login" />;
   }

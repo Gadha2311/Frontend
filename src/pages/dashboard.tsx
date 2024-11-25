@@ -9,6 +9,7 @@ const Dashboard: React.FC = () => {
   const navigate = useNavigate();
   const [url, setUrl] = useState("");
   const [shortenedUrl, setShortenedUrl] = useState<string | null>(null);
+  
 
   const handleLogout = () => {
     logout();
@@ -31,6 +32,24 @@ const Dashboard: React.FC = () => {
   
       const data = await response.data;
       setShortenedUrl(data.shortUrl);
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong!");
+    }
+  };
+
+  const handleUrl = async () => {
+    if (!shortenedUrl) {
+      alert("Please enter a URL to shorten.");
+      return;
+    }
+  
+    try {
+      const shortId:any= shortenedUrl.split("/").pop();
+      const response = await Axios.get(`/auth/${shortId}`)
+      if (response.status === 200) {
+        setUrl(response.data.longUrl)
+      }
     } catch (error) {
       console.error("Error:", error);
       alert("Something went wrong!");
@@ -88,8 +107,8 @@ const Dashboard: React.FC = () => {
           Shorten URL
         </Button>
         {shortenedUrl && (
-          <Typography variant="body1" sx={{ marginTop: "10px", wordBreak: "break-all" }}>
-            Shortened URL: <a href={shortenedUrl} target="_blank" rel="noopener noreferrer">{shortenedUrl}</a>
+          <Typography variant="body1" sx={{ marginTop: "10px", wordBreak: "break-all" }} onChange={handleUrl}>
+            Shortened URL: <a href={url} target="_blank" rel="noopener noreferrer">{shortenedUrl}</a>
           </Typography>
         )}
       </Box>
