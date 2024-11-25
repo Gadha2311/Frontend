@@ -1,9 +1,9 @@
 import { message } from "antd";
-import axios from "axios";
+import Axios from "../axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authcontext";
-import { loginValues,useLoginreturn } from "../interfaces/userInterface";
+import { loginValues, useLoginreturn } from "../interfaces/userInterface";
 
 const useLogin = (): useLoginreturn => {
   const { login } = useAuth();
@@ -34,8 +34,8 @@ const useLogin = (): useLoginreturn => {
     try {
       setError(null);
       setLoading(true);
-      const response = await axios.post(
-        "https://backend-k2d1.onrender.com/api/auth/login", //http://localhost:3000/api/auth/login
+      const response = await Axios.post(
+        "/auth/login", //https://backend-k2d1.onrender.com
         values
       );
       const data = response.data;

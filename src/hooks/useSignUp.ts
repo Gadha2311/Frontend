@@ -1,4 +1,4 @@
-import axios from "axios";
+import Axios from "../axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -39,8 +39,8 @@ const useSignUp = (): useSignUpReturn => {
     try {
       setError(null);
       setLoading(true);
-      const res = await axios.post(
-        "https://backend-k2d1.onrender.com/api/auth/signup", //http://localhost:3000/api/auth/signup
+      const res = await Axios.post(
+        "/auth/signup", //https://backend-k2d1.onrender.com/api/auth/signup 
         values
       );
       const data = res.data;
