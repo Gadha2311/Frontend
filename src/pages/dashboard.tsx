@@ -69,19 +69,7 @@ const Dashboard: React.FC = () => {
         backgroundColor: "#f5f5f5",
       }}
     >
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={handleLogout}
-        sx={{
-          padding: "10px 20px",
-          fontSize: "16px",
-          marginBottom: "20px",
-        }}
-      >
-        Logout
-      </Button>
-
+     
       <Box
         sx={{
           display: "flex",
@@ -112,6 +100,19 @@ const Dashboard: React.FC = () => {
           </Typography>
         )}
       </Box>
+      <Button
+        variant="contained"
+        color="error"
+        onClick={handleLogout}
+        sx={{
+          padding: "10px 40px",
+          fontSize: "16px",
+          marginBottom: "20px",
+          marginTop:"20px"
+        }}
+      >
+        Logout
+      </Button>
     </Box>
   );
 };
